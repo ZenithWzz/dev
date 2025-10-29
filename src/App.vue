@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import DashboardView from './components/DashboardView.vue';
 import LoginCard from './components/LoginCard.vue';
 
 const features = [
@@ -6,10 +8,22 @@ const features = [
   'รักษาความปลอดภัยด้วยการยืนยันตัวตนหลายขั้นตอน',
   'ทำงานร่วมกับทีมได้แบบเรียลไทม์',
 ];
+
+const isLoggedIn = ref(false);
+
+const handleLoginSuccess = () => {
+  isLoggedIn.value = true;
+};
+
+const handleLogout = () => {
+  isLoggedIn.value = false;
+};
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden">
+  <DashboardView v-if="isLoggedIn" @logout="handleLogout" />
+
+  <div v-else class="relative min-h-screen overflow-hidden">
     <div
       class="absolute inset-0 -z-20 bg-gradient-to-br from-slate-900 via-brand-dark to-slate-900"
       aria-hidden="true"
@@ -51,7 +65,7 @@ const features = [
         </ul>
       </section>
 
-      <LoginCard />
+      <LoginCard @success="handleLoginSuccess" />
     </main>
   </div>
 </template>

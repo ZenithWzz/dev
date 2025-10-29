@@ -20,6 +20,8 @@ const socialProviders: SocialProvider[] = [
   },
 ];
 
+const emit = defineEmits<{ (e: 'success'): void }>();
+
 const isSubmitting = ref(false);
 
 const handleSubmit = () => {
@@ -29,7 +31,7 @@ const handleSubmit = () => {
 
   window.setTimeout(() => {
     isSubmitting.value = false;
-    window.alert('เข้าสู่ระบบสำเร็จ!');
+    emit('success');
   }, 800);
 };
 </script>
