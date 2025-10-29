@@ -14,7 +14,8 @@ npm run dev
 
 > ℹ️ หากพบข้อผิดพลาด `npm ERR! code E403` ระหว่าง `npm install` ให้ตรวจสอบว่าสามารถเข้าถึง
 > `https://registry.npmjs.org/` ได้จากเครือข่ายของคุณ หรือทดลองตั้งค่า proxy/registry ขององค์กร
-> ให้ถูกต้องก่อนรันคำสั่งอีกครั้ง
+> ให้ถูกต้องก่อนรันคำสั่งอีกครั้ง หากไม่ได้ใช้งาน proxy ให้ลบการตั้งค่าที่เกี่ยวข้องด้วย
+> `npm config delete proxy` และ `npm config delete https-proxy` แล้วลองรันคำสั่งใหม่อีกครั้ง
 
 ## การ build production
 
